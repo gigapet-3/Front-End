@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 import "./styles/NavBar.css";
 
-// https://getbootstrap.com/docs/4.4/components/navbar/#placement
+// https://getbootstrap.com/docs/4.4/components/navbar/
 // example
 const NavBar = props => {
   return (
@@ -12,8 +12,8 @@ const NavBar = props => {
         className="navbar-toggler"
         type="button"
         data-toggle="collapse"
-        data-target="#navbarTogglerDemo03"
-        aria-controls="navbarTogglerDemo03"
+        data-target="#gigapetNavbarToggler"
+        aria-controls="gigapetNavbarToggler"
         aria-expanded="false"
         aria-label="Toggle navigation"
       >
@@ -23,7 +23,7 @@ const NavBar = props => {
       <a className="navbar-brand" href="/dashboard">
         gigapet
       </a>
-      <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <div className="collapse navbar-collapse" id="gigapetNavbarToggler">
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
           <li className="nav-item">
             <NavLink className="nav-link" to="/">
