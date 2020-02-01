@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import "./styles/NavBar.css";
 
 // https://getbootstrap.com/docs/4.4/components/navbar/#placement
-
+// example
 const NavBar = props => {
   return (
     <nav className="navbar navbar-expand-lg navbar-light">
@@ -26,14 +26,14 @@ const NavBar = props => {
       <div className="collapse navbar-collapse" id="navbarTogglerDemo03">
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
           <li className="nav-item">
-            <a className="nav-link" href="#">
-              <NavLink to="/">Login</NavLink>
-            </a>
+            <NavLink className="nav-link" to="/">
+              Login
+            </NavLink>
           </li>
           <li className="nav-item">
-            <a className="nav-link" href="#">
-              <NavLink to="/register">Register</NavLink>
-            </a>
+            <NavLink className="nav-link" to="/register">
+              Register
+            </NavLink>
           </li>
         </ul>
       </div>
