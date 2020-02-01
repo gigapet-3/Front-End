@@ -1,10 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import Dashboard from "./components/Dashboard";
-import NavBar from "./components/NavBar";
-import Register from "./components/Register";
+import { Login, Register, Dashboard, NavBar } from "./components";
 import PrivateRoute from "./components/PrivateRoute";
-import Login from "./components/Login";
 
 function App() {
   return (
