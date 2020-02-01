@@ -25,5 +25,5 @@
 
   **remember to convert syntax:** the bootstrap examples use HTML syntax,
 
-  - <element class="something" /> <!-- HTML  -->
-  - <element className="something" /> {// javascript}
+        <element class="something" /> <!-- HTML  -->
+        <element className="something" /> {// javascript}
