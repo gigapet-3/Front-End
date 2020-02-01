@@ -5,14 +5,33 @@ import React from "react";
 
 import "./styles/Dashboard.css";
 
+// this component will be shown immediately after login.
+
 const Dashboard = () => {
   // from here we
   //    add/select/edit
   //      child user gigapet account(s)
   //    create meal cards
   //    feed gigapets
+  return (
+    <div>
+      <h1>dashboard</h1>;
+      {/* 
+      possibly:
 
-  return <h1>dashboard</h1>;
+        <switch>
+          <parentView />
+          <gigapetView />
+          <etc... />
+        </switch>
+
+        (isolate and extract those views into stateless functional components)
+        
+        (domain specific language will need to be approved by & obtained from the backend developer)
+
+      */}
+    </div>
+  );
 };
 
 export default Dashboard;
