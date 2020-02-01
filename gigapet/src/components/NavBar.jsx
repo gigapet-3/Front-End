@@ -7,7 +7,7 @@ import "./styles/NavBar.css";
 
 const NavBar = props => {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-light">
       <button
         className="navbar-toggler"
         type="button"
