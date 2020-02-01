@@ -1,12 +1,12 @@
 import React from "react";
 import axiosWithAuth from "../utils/axiosWithAuth";
-import "./styles/Login.css";
 
-const Login = () => {
+const Register = () => {
   const handleSubmit = e => {
     //this will be axioswithauth, let React 2 people know when you hit this point ;)
   };
-  return <div>I am login</div>;
+
+  return <div>Register for a new account</div>;
 };
 
-export default Login;
+export default Register;
