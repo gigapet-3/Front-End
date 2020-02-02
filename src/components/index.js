@@ -4,5 +4,6 @@ import Dashboard from "./Dashboard";
 import MealCard from "./MealCard";
 import GigapetCard from "./GigapetCard";
 import NavBar from "./NavBar";
+import Start from "./Start";
 
-export { Login, Register, Dashboard, MealCard, GigapetCard, NavBar };
+export { Login, Register, Dashboard, MealCard, GigapetCard, NavBar, Start };

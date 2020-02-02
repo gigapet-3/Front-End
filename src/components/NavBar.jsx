@@ -26,7 +26,7 @@ const NavBar = props => {
       <div className="collapse navbar-collapse" id="gigapetNavbarToggler">
         <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
           <li className="nav-item">
-            <NavLink className="nav-link" to="/">
+            <NavLink className="nav-link" to="/login">
               Login
             </NavLink>
           </li>

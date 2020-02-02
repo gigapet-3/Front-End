@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { Login, Register, Dashboard, NavBar } from "./components";
+import { Login, Register, Dashboard, NavBar, Start } from "./components";
 import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
@@ -8,7 +8,8 @@ function App() {
     <div className="App">
       <NavBar />
       <Switch>
-        <Route exact path="/" component={Login} />
+        <Route exact path="/" component={Start} />
+        <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
         <PrivateRoute path="/dashboard" component={Dashboard} />
       </Switch>
