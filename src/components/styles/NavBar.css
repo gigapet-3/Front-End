@@ -12,6 +12,7 @@ https://work.smarchal.com/twbscolor/4.0.0/css/6c46a2353535fafafac0c0c01
 }
 
 .navbar .navbar-brand {
+  font-family: "Rancho", cursive;
   color: #fafafa;
 }
 .navbar .navbar-brand:hover,
