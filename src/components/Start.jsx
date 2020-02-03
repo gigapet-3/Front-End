@@ -1,7 +1,7 @@
 import React from "react";
 
 const Start = () => {
-  return <div>please login or register to continue</div>;
+  return <div>welcome to Lambdipet</div>;
 };
 
 export default Start;
