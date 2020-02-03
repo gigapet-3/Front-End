@@ -1,6 +1,6 @@
 # Front-End
 
-a work in progress... [gigapet-frontend](https://gigapet-frontend.now.sh/).
+a work in progress... [gigapet-frontend](https://front-end-pi.now.sh/).
 
 **to get started,**
 
