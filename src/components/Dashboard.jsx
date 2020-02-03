@@ -3,6 +3,8 @@ import React from "react";
 
 // https://getbootstrap.com/docs/4.4/components/spinners/
 
+import MealCard from "./MealCard";
+
 import "./styles/Dashboard.css";
 
 // this component will be shown immediately after login.
@@ -15,6 +17,7 @@ const Dashboard = () => {
   //    feed gigapets
   return (
     <div>
+      
       <h1>dashboard</h1>;
       {/* 
       possibly:
