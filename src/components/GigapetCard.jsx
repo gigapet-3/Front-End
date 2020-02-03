@@ -1,7 +1,11 @@
 import React from "react";
 import "./styles/GigapetCard.css";
 
-const GigapetCard = ({ name, status }) => {
+const GigapetCard = ({ name, status, url }) => {
+  const handleClick = e => {
+    e.preventDefault();
+    console.log(e);
+  };
   return (
     <div className="card gigapet-card-image-top m-2">
       <img
@@ -12,7 +16,11 @@ const GigapetCard = ({ name, status }) => {
       <div className="card-body">
         <h5 className="card-title">{name}</h5>
         <p className="card-text">{status}</p>
-        <a href="/" className="btn btn-primary gigapet-primary">
+        <a
+          href={url}
+          onClick={handleClick}
+          className="btn btn-primary gigapet-primary"
+        >
           feed me
         </a>
       </div>
