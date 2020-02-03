@@ -15,7 +15,7 @@ const Dashboard = () => {
   //    feed gigapets
   return (
     <div>
-      <h1>dashboard</h1>;
+      <h1>can you see me?</h1>;
       {/* 
       possibly:
 
