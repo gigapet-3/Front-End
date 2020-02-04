@@ -42,7 +42,7 @@ const GigapetView = props => {
       {newPet && (
         <div className="add-gigapet-form m-4">
           <form>
-            <input placeholder="name" />
+            <input placeholder="name" className="form-control" />
           </form>
           <button>add</button>
         </div>
