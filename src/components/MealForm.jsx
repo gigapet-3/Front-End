@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import { useParams } from "react-router-dom";
 import {axiosWithAuth} from "../utils/axiosWithAuth";
 
 
@@ -13,6 +14,8 @@ const MealForm = props => {
     id: Date.now()
   });
 
+  const {id} = useParams();
+
   const handleChange = e => {
     setMeal({
       ...meal,
@@ -26,6 +29,7 @@ const MealForm = props => {
     .post('/meals', meal)
     .then(res => {
       console.log('Meals added', res)
+      props.history.push('/meal-list')
     })
     .catch(err => {
       console.log('Adding meal err', err)

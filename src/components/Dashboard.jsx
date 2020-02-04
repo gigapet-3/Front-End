@@ -19,7 +19,7 @@ const Dashboard = () => {
   //    feed gigapets
   return (
     <div>
-      
+      <MealForm />
       <h1>dashboard</h1>;
       {/* 
       possibly:
