@@ -21,7 +21,7 @@ const GigapetView = props => {
     e.preventDefault();
     setGigapets([...gigapets, petInfo]); // update local
     // axiosWithAuth here
-    setPetInfo(emptyPetInfo); //clear the form
+    setPetInfo(emptyPetInfo); //clear the controlled inputs
     setNewPet(false); // hide form
   };
 
