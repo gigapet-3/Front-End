@@ -15,6 +15,7 @@ const mockData = [
 ];
 
 const GigapetView = props => {
+  const [newPet, setNewPet] = useState(false);
   const [gigapets, setGigapets] = useState();
   useEffect(() => {
     // axiosWithAuth here
@@ -24,8 +25,28 @@ const GigapetView = props => {
       ))
     );
   }, []);
+  const handleNewGigapetClick = e => {
+    e.preventDefault();
+    setNewPet(!newPet);
+  };
   return (
     <>
+      <div className="add-gigapet-div">
+        <button
+          onClick={handleNewGigapetClick}
+          className="add-gigapet-btn button-large btn-primary m-2 p-2"
+        >
+          new gigapet
+        </button>
+      </div>
+      {newPet && (
+        <div className="add-gigapet-form m-4">
+          <form>
+            <input placeholder="name" />
+          </form>
+          <button>add</button>
+        </div>
+      )}
       <h3 className="text-center">gigapets</h3>
       <div className="test-gigapet-cards">{gigapets}</div>
     </>
