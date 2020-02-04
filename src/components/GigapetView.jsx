@@ -5,11 +5,11 @@ import "./styles/GigapetView.css";
 const emptyPetInfo = { name: "", status: "new", url: "/dashboard" };
 
 const GigapetView = props => {
-  const [newPet, setNewPet] = useState(false);
-  const [gigapets, setGigapets] = useState([]);
-  const [petInfo, setPetInfo] = useState({ ...emptyPetInfo });
+  const [newPet, setNewPet] = useState(false); // show form ?
+  const [gigapets, setGigapets] = useState([]); // gigapet(s) being cared for.
+  const [petInfo, setPetInfo] = useState({ ...emptyPetInfo }); // controlled inputs
   useEffect(() => {
-    // axiosWithAuth here
+    // axiosWithAuth, GET .then setGigapets
     console.log("gigapet view");
   }, []);
   const handleNewGigapetClick = e => {
@@ -19,10 +19,10 @@ const GigapetView = props => {
   const handleAddNewPet = e => {
     // (form submission)
     e.preventDefault();
+    setGigapets([...gigapets, petInfo]); // update local
     // axiosWithAuth here
-    setGigapets([...gigapets, petInfo]);
-    setPetInfo(emptyPetInfo);
-    setNewPet(false);
+    setPetInfo(emptyPetInfo); //clear the form
+    setNewPet(false); // hide form
   };
 
   const handleChange = e => {
