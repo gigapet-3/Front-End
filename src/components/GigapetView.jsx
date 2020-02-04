@@ -1,17 +1,29 @@
 import React, { useState, useEffect } from "react";
 import GigapetCard from "./GigapetCard";
 import "./styles/GigapetView.css";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-const emptyPetInfo = { name: "", status: "new", url: "/dashboard" };
+const emptyPetInfo = { id: 0, name: "", status: "new", url: "/meal/" };
 
 const GigapetView = props => {
-  const [newPet, setNewPet] = useState(false);
-  const [gigapets, setGigapets] = useState([]);
-  const [petInfo, setPetInfo] = useState({ ...emptyPetInfo });
-  useEffect(() => {
-    // axiosWithAuth here
-    console.log("gigapet view");
-  }, []);
+  const [newPet, setNewPet] = useState(false); // show form ?
+  const [gigapets, setGigapets] = useState([]); // gigapet(s) being cared for.
+  const [petInfo, setPetInfo] = useState({ ...emptyPetInfo }); // controlled inputs
+  // const [userInfo, setUserInfo] = useState({ id: undefined });
+  // useEffect(() => {
+  //   axiosWithAuth()
+  //     .post("https://gigapet-3.herokuapp.com/api/auth/register", {
+  //       username: "gigaparent",
+  //       password: "password"
+  //     })
+  //     .then(res => {
+  //       setUserInfo(res.data);
+  //       console.log(res);
+  //     })
+  //     .catch(errors => console.log(errors));
+  //   // axiosWithAuth, GET .then setGigapets
+  //   // console.log("gigapet view");
+  // }, []);
   const handleNewGigapetClick = e => {
     e.preventDefault();
     setNewPet(!newPet);
@@ -19,10 +31,11 @@ const GigapetView = props => {
   const handleAddNewPet = e => {
     // (form submission)
     e.preventDefault();
-    // axiosWithAuth here
-    setGigapets([...gigapets, petInfo]);
-    setPetInfo(emptyPetInfo);
-    setNewPet(false);
+    setGigapets([...gigapets, petInfo]); // update local
+    // axiosWithAuth here... returns the updated record ?
+    // we get the id from the result to populate the url.
+    setPetInfo({ ...emptyPetInfo, url: `/meal/${petInfo.id}` }); //clear the controlled inputs
+    setNewPet(false); // hide form
   };
 
   const handleChange = e => {
@@ -58,7 +71,7 @@ const GigapetView = props => {
       <h3 className="text-center">gigapets</h3>
       <div className="test-gigapet-cards">
         {gigapets.map(({ name, status }, idx) => (
-          <GigapetCard key={idx} name={name} status={status} />
+          <GigapetCard key={idx} id={idx} name={name} status={status} />
         ))}
       </div>
     </>
