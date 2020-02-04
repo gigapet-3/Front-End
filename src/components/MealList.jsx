@@ -1,33 +1,29 @@
 import React, {useState, useEffect} from 'react';
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
+import MealCard from "./MealCard";
 
-const MealList = props => {
-    const [list, setList] = useState();
+
+const MealList = () => {
+    const [mealList, setMealList] = useState();
 
     useEffect(() => {
         axiosWithAuth()
-        .get('/meals')
+        .get('/meals')//change this to meals with pet id
         .then(response => {
             console.log(response)
-            setList(response.data);
+            setMealList(response.data);
         })
         .catch(err => {
             console.log("Meals list not returned", err)
         })
-    });
+    }[]);
+
+
 
     return(
         <div>
-            {list.map(meal => (
-                <MealCard
-                key={meal.id}
-                name={meal.name}
-                category={meal.category}
-                servings={meal.servings}
-                date={meal.date}
-                />
-            ))}
+            <MealCard mealList={mealList} updateList={setMealList} />
         </div>
     )
 }
