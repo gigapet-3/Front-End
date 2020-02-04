@@ -1,15 +1,17 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 // import axiosWithAuth from "../utils/axiosWithAuth";
 
 // https://getbootstrap.com/docs/4.4/components/spinners/
 
-import MealCard from "./MealCard";
+import MealForm from "./MealForm";
 
 import "./styles/Dashboard.css";
 
 // this component will be shown immediately after login.
 
 const Dashboard = () => {
+  const [view, setView] = useState();
+
   // from here we
   //    add/select/edit
   //      child user gigapet account(s)
@@ -17,6 +19,7 @@ const Dashboard = () => {
   //    feed gigapets
   return (
     <div>
+      
       <h1>dashboard</h1>;
       {/* 
       possibly:
