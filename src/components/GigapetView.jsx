@@ -2,33 +2,33 @@ import React, { useState, useEffect } from "react";
 import GigapetCard from "./GigapetCard";
 import "./styles/GigapetView.css";
 
-const mockData = [
-  { name: "Kathleen", status: "meow", url: "/" },
-  { name: "Catherine", status: "meow", url: "/" },
-  { name: "Katrina", status: "meow", url: "/" },
-  { name: "Cathy", status: "meow", url: "/" },
-  {
-    name: "The honorable Judge Meow-meow Smith",
-    status: "justice meow!",
-    url: "/"
-  }
-];
+const emptyPetInfo = { name: "", status: "new", url: "/dashboard" };
 
 const GigapetView = props => {
   const [newPet, setNewPet] = useState(false);
-  const [gigapets, setGigapets] = useState();
+  const [gigapets, setGigapets] = useState([]);
+  const [petInfo, setPetInfo] = useState({ ...emptyPetInfo });
   useEffect(() => {
     // axiosWithAuth here
-    setGigapets(
-      mockData.map(({ name, status }, idx) => (
-        <GigapetCard key={idx} name={name} status={status} />
-      ))
-    );
+    console.log("gigapet view");
   }, []);
   const handleNewGigapetClick = e => {
     e.preventDefault();
     setNewPet(!newPet);
   };
+  const handleAddNewPet = e => {
+    // (form submission)
+    e.preventDefault();
+    // axiosWithAuth here
+    setGigapets([...gigapets, petInfo]);
+    setPetInfo(emptyPetInfo);
+    setNewPet(false);
+  };
+
+  const handleChange = e => {
+    setPetInfo({ ...petInfo, [e.target.name]: e.target.value });
+  };
+
   return (
     <>
       <div className="add-gigapet-div">
@@ -41,14 +41,26 @@ const GigapetView = props => {
       </div>
       {newPet && (
         <div className="add-gigapet-form m-4">
-          <form>
-            <input placeholder="name" className="form-control" />
+          <form onSubmit={handleAddNewPet}>
+            <input
+              placeholder="name"
+              name="name"
+              className="form-control"
+              value={petInfo.name}
+              onChange={handleChange}
+            />
+            <button className="add-gigapet-btn button-large btn-primary m-2 p-2">
+              add
+            </button>
           </form>
-          <button>add</button>
         </div>
       )}
       <h3 className="text-center">gigapets</h3>
-      <div className="test-gigapet-cards">{gigapets}</div>
+      <div className="test-gigapet-cards">
+        {gigapets.map(({ name, status }, idx) => (
+          <GigapetCard key={idx} name={name} status={status} />
+        ))}
+      </div>
     </>
   );
 };
