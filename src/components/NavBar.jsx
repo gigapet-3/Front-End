@@ -1,15 +1,24 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 
 import "./styles/NavBar.css";
 
 // https://getbootstrap.com/docs/4.4/components/navbar/
 // example
 const NavBar = props => {
+  const history = useHistory();
+  const handleBrandClick = e => {
+    e.preventDefault();
+    history.push("/dashboard");
+  };
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark">
-        <a className="navbar-brand" href="/dashboard">
+        <a
+          className="navbar-brand"
+          onClick={handleBrandClick}
+          href="/dashboard"
+        >
           LambdiPet
         </a>
 
