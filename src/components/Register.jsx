@@ -51,17 +51,17 @@ class RegisterPage extends Component {
     return (
       <div className="Register">
         <form onSubmit={this.handleSubmit}>
-          <h2>Register</h2>
-          <label>Email</label>
+          <h2>Register Now!</h2>
+          <h4>Email</h4>
           <input type="text" data-test="email" value={this.state.email} onChange={this.handleEmailChange} />
-          <label>Create Username
-          </label>
+          <h4>Create Username
+          </h4>
           <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} />
           <br />
           <label>Create Password</label>
           <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
           <br />
-          <input type="submit" value="Log In" data-test="submit" />
+          <input type="submit" value="Register" data-test="submit" />
         </form>
       </div>
     );

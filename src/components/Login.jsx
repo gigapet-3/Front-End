@@ -55,10 +55,8 @@ class LoginPage extends Component {
           <label>User Name
           </label>
           <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} />
-          <br />
           <label>Password</label>
           <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
-          <br />
           <input type="submit" value="Log In" data-test="submit" />
         </form>
       </div>
