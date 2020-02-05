@@ -62,37 +62,38 @@ const MealCard = ({ mealList, updateMeals}) => {
             {editing && (
                 <div className="card text-center" style="width: 18rem;">
                 <div className="card-body" id={mealToEdit.id}>
-                    <h5 className="card-title">Category:
+                    <h5 className="card-title">Category: </h5>
                         <input 
                         type="text"
                         name="category"
                         value={mealToEdit.category}
                         onChange={handleUpdate}
                         />
-                    </h5>
-                    <h6 className="card-text">Date:
+                    
+                    <h6 className="card-text">Date:</h6>
                         <input 
                         type="text"
                         name="date"
                         value={mealToEdit.date}
                         onChange={handleUpdate}
                         />
-                    </h6>
-                    <p className="card-text">Name: <input 
+                    
+                    <p className="card-text">Name: </p>
+                        <input 
                         type="text"
                         name="name"
                         value={mealToEdit.name}
                         onChange={handleUpdate}
                         />
-                    </p>
-                    <p className="card-text">Servings: 
+                    
+                    <p className="card-text">Servings: </p>
                     <input 
                         type="text"
                         name="servings"
                         value={mealToEdit.servings}
                         onChange={handleUpdate}
                         />
-                    </p>
+                    
                     <button onClick={() => setEditing(false)}>Cancel</button>
                     <button onClick={saveEdit}>Save Changes</button>
                 </div>
