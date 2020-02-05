@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+import { useHistory } from "react-router-dom";
 
 const initialMeal = {
     date: '',
@@ -9,9 +10,10 @@ const initialMeal = {
     id: ''
 };
 
-const MealCard = ({ mealList, updateMeals}) => {
+const MealCard = ({ mealList, updateList}) => {
     const [editing, setEditing] = useState(false);
     const [mealToEdit, setMealToEdit] = useState(initialMeal);
+    const history = useHistory();
 
     const handleUpdate = e => {
         setMealToEdit({
@@ -26,19 +28,31 @@ const MealCard = ({ mealList, updateMeals}) => {
     }
 
     const saveEdit = e => {
+        
         axiosWithAuth()
         .put(`/meals/${mealToEdit.id}`, mealToEdit)
         .then(res => {
-            updateMeals(res.data)
+            console.log(res)
+            setEditing(false)  
+            axiosWithAuth()
+                .get('/meals')//change this to meals with pet id
+                .then(response => {
+                    console.log(response)
+                    updateList(response.data);
+                })
+                .catch(err => {
+                    console.log("Meals list not returned", err)
+                })         
+
         })
-        .cath(err => console.log('Editing error', err))
+        .catch(err => console.log('Editing error', err))
     };
 
-    const deleteColor = food => {
+    const deleteFood = food => {
         axiosWithAuth()
         .delete(`/meals/${food.id}`)
         .then(res => {
-            updateMeals(mealList => mealList.filter(meal => {
+            updateList(mealList => mealList.filter(meal => {
                 return meal.id !== res.data
             }))
         })
@@ -50,8 +64,8 @@ const MealCard = ({ mealList, updateMeals}) => {
             {mealList && mealList.map(food => (
                 (editing && food.id === mealToEdit.id)  ? 
                 (
-                <div className="card text-center" style={{width: "18rem"}}>
-                <div className="card-body" id={mealToEdit.id}>
+                <div className="card text-center" style={{width: "18rem"}} key={mealToEdit.id}>
+                <div className="card-body" >
                     <h5 className="card-title">Category: </h5>
                         <input 
                         type="text"
@@ -96,7 +110,7 @@ const MealCard = ({ mealList, updateMeals}) => {
                     <p className="card-text">Name: {food.name}</p>
                     <p className="card-text">Servings: {food.servings}</p>
                     <button onClick={() => editMeal(food)}>Edit</button>
-                    <button onClick={() => deleteColor(food)}>Delete</button>
+                    <button onClick={() => deleteFood(food)}>Delete</button>
                 </div>
             </div>
             ))}
