@@ -10,7 +10,7 @@ const MealForm = props => {
     category: "",
     servings: "",
     name: "",
-    id: Date.now()
+   
   });
 
   const { id } = useParams();
@@ -48,7 +48,7 @@ const MealForm = props => {
             placeholder="Date mm/dd/yyyy"
             value={meal.date}
             onChange={handleChange}
-          ></input>
+          />
         </div>
 
         <label for="food category">Choose a Food Category</label>

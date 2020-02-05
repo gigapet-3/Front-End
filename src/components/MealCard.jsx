@@ -22,7 +22,7 @@ const MealCard = ({ mealList, updateMeals}) => {
     
     const editMeal = food => {
         setEditing(true);
-        setMealToEdit(food)
+        setMealToEdit(food)        
     }
 
     const saveEdit = e => {
@@ -47,20 +47,10 @@ const MealCard = ({ mealList, updateMeals}) => {
  
     return (
         <div>
-            {mealList.map(food => (
-            <div className="card text-center" style="width: 18rem;">
-                <div className="card-body" id={food.id}>
-                    <h5 className="card-title">Category: {food.category}</h5>
-                    <h6 className="card-text">Date: {food.date}</h6>
-                    <p className="card-text">Name: {food.name}</p>
-                    <p className="card-text">Servings: {food.servings}</p>
-                    <button onClick={() => editMeal(food)}>Edit</button>
-                    <button onClick={() => deleteColor(food)}>Delete</button>
-                </div>
-            </div>
-            ))}
-            {editing && (
-                <div className="card text-center" style="width: 18rem;">
+            {mealList && mealList.map(food => (
+                (editing && food.id === mealToEdit.id)  ? 
+                (
+                <div className="card text-center" style={{width: "18rem"}}>
                 <div className="card-body" id={mealToEdit.id}>
                     <h5 className="card-title">Category: </h5>
                         <input 
@@ -98,7 +88,18 @@ const MealCard = ({ mealList, updateMeals}) => {
                     <button onClick={saveEdit}>Save Changes</button>
                 </div>
             </div>
-            )}
+            ) :
+            <div className="card text-center" style={{width: "18rem"}} key={food.id}>
+                <div className="card-body" >
+                    <h5 className="card-title">Category: {food.category}</h5>
+                    <h6 className="card-text">Date: {food.date}</h6>
+                    <p className="card-text">Name: {food.name}</p>
+                    <p className="card-text">Servings: {food.servings}</p>
+                    <button onClick={() => editMeal(food)}>Edit</button>
+                    <button onClick={() => deleteColor(food)}>Delete</button>
+                </div>
+            </div>
+            ))}
         </div>
     )
 };
