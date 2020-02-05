@@ -44,12 +44,7 @@ const NavBar = props => {
               <NavLink className="nav-link text-right" to="/register">
                 Register
               </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link text-right" to="/testcard">
-                testing
-              </NavLink>
-            </li>
+            </li>            
           </ul>
         </div>
       </nav>
