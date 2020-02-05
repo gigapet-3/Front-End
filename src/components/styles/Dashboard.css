@@ -1,1 +1,16 @@
 /* apply extra style here */
+.dashboard-container {
+  background-size: cover;
+  background-image: url("../bgimage/background.png");
+  min-height: 100vh;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.gigapet-cards {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
