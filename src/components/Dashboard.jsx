@@ -1,10 +1,9 @@
-import React, {useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 // import axiosWithAuth from "../utils/axiosWithAuth";
 
 // https://getbootstrap.com/docs/4.4/components/spinners/
 
-import MealForm from "./MealForm";
-
+import GigapetCard from "./GigapetCard";
 import "./styles/Dashboard.css";
 
 // this component will be shown immediately after login.
@@ -12,30 +11,15 @@ import "./styles/Dashboard.css";
 const Dashboard = () => {
   const [view, setView] = useState();
 
-  // from here we
-  //    add/select/edit
-  //      child user gigapet account(s)
-  //    create meal cards
-  //    feed gigapets
   return (
-    <div>
-      
-      <h1>dashboard</h1>;
-      {/* 
-      possibly:
-
-        <switch>
-          <parentView />
-          <gigapetView />
-          <etc... />
-        </switch>
-
-        (isolate and extract those views into stateless functional components)
-        
-        (domain specific language will need to be approved by & obtained from the backend developer)
-
-      */}
-    </div>
+    <>
+      <GigapetCard
+        key={0}
+        id={0}
+        name="example Gigapet"
+        status="sorta hungry"
+      />
+    </>
   );
 };
 
