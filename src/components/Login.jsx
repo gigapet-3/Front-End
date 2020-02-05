@@ -52,10 +52,10 @@ class LoginPage extends Component {
       <div className="Login">
         <form onSubmit={this.handleSubmit}>
           <h2>Log In!</h2>
-          <label>User Name
-          </label>
+          <h4>User Name
+          </h4>
           <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} />
-          <label>Password</label>
+          <h4>Password</h4>
           <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
           <input type="submit" value="Log In" data-test="submit" />
         </form>

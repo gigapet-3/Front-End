@@ -58,7 +58,7 @@ class RegisterPage extends Component {
           </h4>
           <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} />
           <br />
-          <label>Create Password</label>
+          <h4>Create Password</h4>
           <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
           <br />
           <input type="submit" value="Register" data-test="submit" />
