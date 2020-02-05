@@ -5,7 +5,7 @@ import MealCard from "./MealCard";
 
 
 const MealList = () => {
-    const [mealList, setMealList] = useState();
+    const [mealList, setMealList] = useState([]);
 
     useEffect(() => {
         setMealList(undefined)
@@ -20,6 +20,7 @@ const MealList = () => {
         })
     }, []);
 
+    
     if (mealList) {
         return(
         

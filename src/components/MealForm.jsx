@@ -50,40 +50,8 @@ const MealForm = props => {
             onChange={handleChange}
           />
         </div>
-
-        <label for="food category">Choose a Food Category</label>
-        <select
-          multiple
-          class="form-control"
-          id="food-category"
-          name="category"
-          onChange={handleChange}
-        >
-          <option value="dairy">Dairy</option>
-          <option value="fruit">Fruit</option>
-          <option value="grains">Grains</option>
-          <option value="meat">Meat</option>
-          <option value="sweets">Sweets</option>
-          <option value="vegetables">Vegetables</option>
-        </select>
-        <div className="form-group">
-          <label for="servings">Servings</label>
-          <select
-            class="form-control"
-            id="servings"
-            name="servings"
-            onChange={handleChange}
-          >
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-          </select>
-        </div>
-        <div class="form-group"></div>
         <div class="form-group">
-          <label for="food-input">Food Description</label>
+          <label for="food-input">Name of Food</label>
           <input
             className="form-control"
             id="food-input"
@@ -92,8 +60,44 @@ const MealForm = props => {
             placeholder="Ex...Granny Smith Apple"
             onChange={handleChange}
             value={meal.name}
-          ></input>
+          />
         </div>
+
+        <label for="food category">Food Category</label>
+        <select
+          
+          class="form-control"
+          id="food-category"
+          name="category"
+          onChange={handleChange}
+        >
+        <option>Choose food category</option>
+          <option value="dairy">Dairy</option>
+          <option value="fruit">Fruit</option>
+          <option value="grains">Grains</option>
+          <option value="meat">Meat</option>
+          <option value="sweets">Sweets</option>
+          <option value="vegetables">Vegetables</option>
+        </select>
+        <div className="form-group">
+
+          <label for="servings">Servings</label>
+          <select
+            class="form-control"
+            id="servings"
+            name="servings"
+            onChange={handleChange}
+          >
+          <option>Choose serving size</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        
+        
 
         <button>Feed my pet</button>
       </form>
