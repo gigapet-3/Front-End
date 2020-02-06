@@ -25,7 +25,7 @@ function App() {
   const location = useLocation();
   useEffect(() => {
     if (location.pathname === "/dashboard") {
-      setTitle("my gigapets");
+      setTitle("My GigaPets");
       if (localStorage.getItem("token"))
         setMenuItems([{ url: "/logout", text: "Logout" }]);
     } else if (location.pathname.includes("meal")) {
