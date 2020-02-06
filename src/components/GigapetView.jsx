@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import GigapetCard from "./GigapetCard";
+import "./styles/Dashboard.css";
 import "./styles/GigapetView.css";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 
@@ -14,7 +15,6 @@ const GigapetView = props => {
     axiosWithAuth()
       .get("/pets")
       .then(res => {
-        console.log(res);
         setGigapets(res.data);
       })
       .catch(errors => console.log(errors));
@@ -44,15 +44,14 @@ const GigapetView = props => {
   };
 
   return (
-    <>
-      <div className="add-gigapet-div">
-        <button
-          onClick={handleNewGigapetClick}
-          className="add-gigapet-btn button-large btn-primary m-2 p-2"
-        >
-          new gigapet
-        </button>
-      </div>
+    <div className="bg-001">
+      <button
+        onClick={handleNewGigapetClick}
+        className="add-gigapet-btn button-large btn-primary m-4 p-2"
+      >
+        new gigapet
+      </button>
+
       {newPet && (
         <div className="add-gigapet-form m-4">
           <form onSubmit={handleAddNewPet}>
@@ -76,13 +75,18 @@ const GigapetView = props => {
           </form>
         </div>
       )}
-      <h3 className="text-center">gigapets</h3>
-      <div className="test-gigapet-cards">
+      <span className="gigapet-cards">
         {gigapets.map(({ name, status, id }) => (
-          <GigapetCard key={id} id={id} name={name} status={status} />
+          <GigapetCard
+            key={id}
+            id={id}
+            name={name}
+            status={status}
+            setGigapets={setGigapets}
+          />
         ))}
-      </div>
-    </>
+      </span>
+    </div>
   );
 };
 

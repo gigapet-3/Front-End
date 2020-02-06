@@ -20,8 +20,22 @@
 .add-gigapet-div {
   display: flex;
   justify-content: flex-end;
+  flex-flow: row wrap;
   align-items: center;
+  background-size: cover;
+  min-height: 100vh;
+  background-image: url("../bgimage/background.png");
 }
 .add-gigapet-btn {
   border-radius: 0.4rem !important;
+}
+
+.new-pet-span {
+  display: flex;
+  flex-direction: column;
+}
+
+.bg-001 {
+  background-image: url("../bgimage/background.png");
+  background-size: cover;
 }
