@@ -73,7 +73,14 @@ const MealCard = ({ mealList, updateList, petNumber}) => {
                 (
                 <div className="card mealcard-card-image-top"  key={mealToEdit.id}>
                 <div className="card-body" >
-                    <h5 className="card-title">Category: </h5>
+                    <h5 className="card-text">Name: </h5>
+                        <input 
+                        type="text"
+                        name="name"
+                        value={mealToEdit.name}
+                        onChange={handleUpdate}
+                        />
+                    <p className="card-title">Category: </p>
                         <input 
                         type="text"
                         name="category"
@@ -87,16 +94,7 @@ const MealCard = ({ mealList, updateList, petNumber}) => {
                         name="date"
                         value={mealToEdit.date}
                         onChange={handleUpdate}
-                        />
-                    
-                    <p className="card-text">Name: </p>
-                        <input 
-                        type="text"
-                        name="name"
-                        value={mealToEdit.name}
-                        onChange={handleUpdate}
-                        />
-                    
+                        />                
                     <p className="card-text">Servings: </p>
                     <input 
                         type="text"
@@ -104,7 +102,6 @@ const MealCard = ({ mealList, updateList, petNumber}) => {
                         value={mealToEdit.servings}
                         onChange={handleUpdate}
                         />
-                    
                     <button className="btn btn-primary mealcard-primary" onClick={() => setEditing(false)}>Cancel</button>
                     <button className="btn btn-primary mealcard-primary m-3"onClick={saveEdit}>Save Changes</button>
                 </div>
@@ -119,11 +116,10 @@ const MealCard = ({ mealList, updateList, petNumber}) => {
                 <div className="card-body" >
                     <h5 className="card-text">{food.name}</h5>
                     <p className="card-title">Category: {food.category}</p>
-                    <p className="card-text">Date: {food.date}</p>
-                    
+                    <p className="card-text">Date: {food.date}</p>                    
                     <p className="card-text">Servings: {food.servings}</p>
                     <button className="btn btn-primary mealcard-primary" onClick={() => editMeal(food)}>Edit</button>
-                    <button className="btn btn-primary mealcard-primary m-4" onClick={() => deleteFood(food)}>Delete</button>
+                    <button className="btn btn-primary mealcard-primary m-3" onClick={() => deleteFood(food)}>Delete</button>
                 </div>
             </div>
             ))}
