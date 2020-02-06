@@ -43,7 +43,7 @@ const GigapetCard = ({ name, status, id, setGigapets }) => {
       />
       <button
         type="button"
-        class="btn btn-light edit-btn"
+        className="btn btn-light edit-btn"
         onClick={handleEditClick}
       >
         {editing ? "save" : "edit"}
