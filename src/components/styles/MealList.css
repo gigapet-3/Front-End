@@ -1,16 +1,17 @@
 .meal-list-container {
     background-size: cover;
     background-image: url("../bgimage/background.png");
-    min-height: 100vh;
+    /* min-height: 100vh; */
     display: flex;
-    flex-direction: row;
+    flex-flow: row wrap;
     justify-content: space-around;
-    align-items: center;
+    /* align-items: center; */
   }
   .meal-list-cards {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
     align-items: center;
+    
   }
   
