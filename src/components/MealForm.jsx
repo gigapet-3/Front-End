@@ -5,15 +5,16 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 // https://getbootstrap.com/docs/4.4/components/card/
 
 const MealForm = props => {
+  const { petId } = useParams();
   const [meal, setMeal] = useState({
     date: "",
     category: "",
     servings: "",
     name: "",
-   
+    pet_id: petId
   });
 
-  const { id } = useParams();
+
 
   const handleChange = e => {
     setMeal({
@@ -28,7 +29,7 @@ const MealForm = props => {
       .post("/meals", meal)
       .then(res => {
         console.log("Meals added", res);
-        props.history.push("/meal-list");
+        props.history.push(`/meal-list/${meal.pet_id}`);
       })
       .catch(err => {
         console.log("Adding meal err", err);
@@ -39,9 +40,9 @@ const MealForm = props => {
     <div className="m-3">
       <form onSubmit={handleSubmit}>
         <div className="form-group">
-          <label for="food-input">Date</label>
+          <label htmlFor="food-input">Date</label>
           <input
-            class="form-control"
+            className="form-control"
             id="date-input"
             rows="3"
             name="date"
@@ -50,8 +51,8 @@ const MealForm = props => {
             onChange={handleChange}
           />
         </div>
-        <div class="form-group">
-          <label for="food-input">Name of Food</label>
+        <div className="form-group">
+          <label htmlFor="food-input">Name of Food</label>
           <input
             className="form-control"
             id="food-input"
@@ -63,10 +64,9 @@ const MealForm = props => {
           />
         </div>
 
-        <label for="food category">Food Category</label>
-        <select
-          
-          class="form-control"
+        <label htmlFor="food category">Food Category</label>
+        <select          
+          className="form-control"
           id="food-category"
           name="category"
           onChange={handleChange}
@@ -80,10 +80,9 @@ const MealForm = props => {
           <option value="vegetables">Vegetables</option>
         </select>
         <div className="form-group">
-
-          <label for="servings">Servings</label>
+          <label htmlFor="servings">Servings</label>
           <select
-            class="form-control"
+            className="form-control"
             id="servings"
             name="servings"
             onChange={handleChange}
@@ -95,10 +94,7 @@ const MealForm = props => {
             <option value="4">4</option>
             <option value="5">5</option>
           </select>
-        </div>
-        
-        
-
+        </div>      
         <button>Feed my pet</button>
       </form>
     </div>
