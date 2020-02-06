@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-import { useHistory } from "react-router-dom";
+
 import "./styles/MealCard.css";
 
 const initialMeal = {
@@ -14,8 +14,7 @@ const initialMeal = {
 const MealCard = ({ mealList, updateList}) => {
     const [editing, setEditing] = useState(false);
     const [mealToEdit, setMealToEdit] = useState(initialMeal);
-    const history = useHistory();
-
+    
     const handleUpdate = e => {
         setMealToEdit({
             ...mealToEdit,
