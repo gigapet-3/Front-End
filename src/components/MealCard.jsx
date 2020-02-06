@@ -11,7 +11,7 @@ const initialMeal = {
     id: ''
 };
 
-const MealCard = ({ mealList, updateList}) => {
+const MealCard = ({ mealList, updateList, petNumber}) => {
     const [editing, setEditing] = useState(false);
     const [mealToEdit, setMealToEdit] = useState(initialMeal);
     
@@ -37,7 +37,7 @@ const MealCard = ({ mealList, updateList}) => {
                 .get('/meals')//change this to meals with pet id
                 .then(response => {
                     console.log(response)
-                    updateList(response.data);
+                    updateList(response.data.filter(m => m.pet_id === petNumber));
                 })
                 .catch(err => {
                     console.log("Meals list not returned", err)
@@ -57,14 +57,11 @@ const MealCard = ({ mealList, updateList}) => {
                 .get('/meals')//change this to meals with pet id
                 .then(response => {
                     console.log(response)
-                    updateList(response.data);
+                    updateList(response.data.filter(m => m.pet_id === petNumber));
                 })
                 .catch(err => {
                     console.log("Meals list not returned", err)
                 })         
-            // updateList((mealList => mealList.filter(food => {
-            //     return food.id !== res.data
-            // })))
         })
         .catch(err => console.log('Deleting error', err))
     }
@@ -121,7 +118,7 @@ const MealCard = ({ mealList, updateList}) => {
             />
                 <div className="card-body" >
                     <h5 className="card-title">Category: {food.category}</h5>
-                    <h6 className="card-text">Date: {food.date}</h6>
+                    <p className="card-text">Date: {food.date}</p>
                     <p className="card-text">Name: {food.name}</p>
                     <p className="card-text">Servings: {food.servings}</p>
                     <button className="btn btn-primary mealcard-primary" onClick={() => editMeal(food)}>Edit</button>

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
+import "./styles/MealForm.css";
 
 // https://getbootstrap.com/docs/4.4/components/card/
 
@@ -37,7 +38,7 @@ const MealForm = props => {
   };
 
   return (
-    <div className="m-3">
+    <div className="container">
       <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="food-input">Date</label>
@@ -63,13 +64,14 @@ const MealForm = props => {
             value={meal.name}
           />
         </div>
-
+        <div className="form-group">
         <label htmlFor="food category">Food Category</label>
         <select          
           className="form-control"
           id="food-category"
           name="category"
           onChange={handleChange}
+          rows="3"
         >
         <option>Choose food category</option>
           <option value="dairy">Dairy</option>
@@ -79,12 +81,14 @@ const MealForm = props => {
           <option value="sweets">Sweets</option>
           <option value="vegetables">Vegetables</option>
         </select>
+        </div>
         <div className="form-group">
           <label htmlFor="servings">Servings</label>
           <select
             className="form-control"
             id="servings"
             name="servings"
+            rows="3"
             onChange={handleChange}
           >
           <option>Choose serving size</option>
@@ -95,7 +99,7 @@ const MealForm = props => {
             <option value="5">5</option>
           </select>
         </div>      
-        <button>Feed my pet</button>
+        <button className="btn btn-primary">Feed my pet</button>
       </form>
     </div>
   );
