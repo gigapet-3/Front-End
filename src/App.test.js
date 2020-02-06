@@ -3,12 +3,12 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { render } from "@testing-library/react";
 import App from "./App";
 
-test("renders gigapet link", () => {
+test("renders log(in/out) link", () => {
   const { getByText } = render(
     <Router>
       <App />
     </Router>
   );
-  const linkElement = getByText(/gigapet/i);
-  expect(linkElement).toBeInTheDocument();
+  const linkLogin = getByText(/login/i);
+  expect(linkLogin).toBeInTheDocument();
 });
