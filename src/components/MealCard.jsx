@@ -67,11 +67,11 @@ const MealCard = ({ mealList, updateList, petNumber}) => {
     }
  
     return (
-        <div>
+        <div className="meal-card-container">
             {mealList && mealList.map(food => (
                 (editing && food.id === mealToEdit.id)  ? 
                 (
-                <div className="card mealcard-card-image-top m-2" style={{width: "18rem"}} key={mealToEdit.id}>
+                <div className="card mealcard-card-image-top"  key={mealToEdit.id}>
                 <div className="card-body" >
                     <h5 className="card-title">Category: </h5>
                         <input 
@@ -110,16 +110,17 @@ const MealCard = ({ mealList, updateList, petNumber}) => {
                 </div>
             </div>
             ) :
-            <div className="card mealcard-card-image-top m-2" style={{width: "18rem"}} key={food.id}>
+            <div className="card mealcard-card-image-top"  key={food.id}>
                 <img
                 src='https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
                 className="card-img-top"
                 alt="pet name here"
             />
                 <div className="card-body" >
-                    <h5 className="card-title">Category: {food.category}</h5>
+                    <h5 className="card-text">{food.name}</h5>
+                    <p className="card-title">Category: {food.category}</p>
                     <p className="card-text">Date: {food.date}</p>
-                    <p className="card-text">Name: {food.name}</p>
+                    
                     <p className="card-text">Servings: {food.servings}</p>
                     <button className="btn btn-primary mealcard-primary" onClick={() => editMeal(food)}>Edit</button>
                     <button className="btn btn-primary mealcard-primary m-4" onClick={() => deleteFood(food)}>Delete</button>

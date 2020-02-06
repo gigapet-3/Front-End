@@ -1,10 +1,22 @@
 @import url("https://fonts.googleapis.com/css?family=Rancho&display=swap");
 
+
+.meal-card-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+
 .mealcard-card-image-top {
+    margin: 1.5rem;
     width: 18rem;
     box-shadow: 0 7px 7px rgba(0, 0, 0, 0.7);
   }
   
+  .card-body {
+    flex: 1 1 auto;
+  }
   .mealcard-primary {
     background-color: #6c46a2;
     color: #fafafa;    
