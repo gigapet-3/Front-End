@@ -3,7 +3,7 @@
     background-image: url("../bgimage/background.png");
     min-height: 100vh;
     display: flex;
-    flex-flow: row wrap;
+    flex-direction: row;
     justify-content: space-around;
     align-items: center;
   }

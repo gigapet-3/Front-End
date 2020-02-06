@@ -25,8 +25,7 @@ const MealList = () => {
 
     
     if (mealList) {
-        return(
-        
+        return(        
             <div className="meal-list-container">
                 <MealCard mealList={mealList} updateList={setMealList} />
             </div>)
