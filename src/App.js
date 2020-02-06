@@ -16,12 +16,12 @@ function App() {
   const [title, setTitle] = useState("Welcome");
   const location = useLocation();
   useEffect(() => {
-    console.log(location.pathname);
+    // console.log(location.pathname);
     if (location.pathname === "/dashboard") {
       setTitle("My GigaPets");
     } else if (location.pathname.includes("meal")) {
       const pet_id = location.pathname.split("/").pop();
-      console.log(`the pet id = ${pet_id} `);
+      // console.log(`the pet id = ${pet_id} `);
       // axios /pets/:id
       axiosWithAuth()
         .get(`/pets/${pet_id}`)
