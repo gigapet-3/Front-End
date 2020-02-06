@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 import { useHistory } from "react-router-dom";
+import "./styles/MealCard.css";
 
 const initialMeal = {
     date: '',
@@ -27,8 +28,7 @@ const MealCard = ({ mealList, updateList}) => {
         setMealToEdit(food)        
     }
 
-    const saveEdit = e => {
-        
+    const saveEdit = e => {        
         axiosWithAuth()
         .put(`/meals/${mealToEdit.id}`, mealToEdit)
         .then(res => {
@@ -49,12 +49,23 @@ const MealCard = ({ mealList, updateList}) => {
     };
 
     const deleteFood = food => {
+        
         axiosWithAuth()
         .delete(`/meals/${food.id}`)
         .then(res => {
-            updateList(mealList => mealList.filter(meal => {
-                return meal.id !== res.data
-            }))
+            console.log(res)
+            axiosWithAuth()
+                .get('/meals')//change this to meals with pet id
+                .then(response => {
+                    console.log(response)
+                    updateList(response.data);
+                })
+                .catch(err => {
+                    console.log("Meals list not returned", err)
+                })         
+            // updateList((mealList => mealList.filter(food => {
+            //     return food.id !== res.data
+            // })))
         })
         .catch(err => console.log('Deleting error', err))
     }
@@ -64,7 +75,7 @@ const MealCard = ({ mealList, updateList}) => {
             {mealList && mealList.map(food => (
                 (editing && food.id === mealToEdit.id)  ? 
                 (
-                <div className="card text-center" style={{width: "18rem"}} key={mealToEdit.id}>
+                <div className="card mealcard-card-image-top m-2" style={{width: "18rem"}} key={mealToEdit.id}>
                 <div className="card-body" >
                     <h5 className="card-title">Category: </h5>
                         <input 
@@ -98,19 +109,24 @@ const MealCard = ({ mealList, updateList}) => {
                         onChange={handleUpdate}
                         />
                     
-                    <button onClick={() => setEditing(false)}>Cancel</button>
-                    <button onClick={saveEdit}>Save Changes</button>
+                    <button className="btn btn-primary mealcard-primary" onClick={() => setEditing(false)}>Cancel</button>
+                    <button className="btn btn-primary mealcard-primary m-3"onClick={saveEdit}>Save Changes</button>
                 </div>
             </div>
             ) :
-            <div className="card text-center" style={{width: "18rem"}} key={food.id}>
+            <div className="card mealcard-card-image-top m-2" style={{width: "18rem"}} key={food.id}>
+                <img
+                src='https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80'
+                className="card-img-top"
+                alt="pet name here"
+            />
                 <div className="card-body" >
                     <h5 className="card-title">Category: {food.category}</h5>
                     <h6 className="card-text">Date: {food.date}</h6>
                     <p className="card-text">Name: {food.name}</p>
                     <p className="card-text">Servings: {food.servings}</p>
-                    <button onClick={() => editMeal(food)}>Edit</button>
-                    <button onClick={() => deleteFood(food)}>Delete</button>
+                    <button className="btn btn-primary mealcard-primary" onClick={() => editMeal(food)}>Edit</button>
+                    <button className="btn btn-primary mealcard-primary m-4" onClick={() => deleteFood(food)}>Delete</button>
                 </div>
             </div>
             ))}
