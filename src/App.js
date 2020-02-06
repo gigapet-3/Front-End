@@ -6,7 +6,8 @@ import {
   Dashboard,
   NavBar,
   Start,
-  MealForm
+  MealForm,
+  MealList
 } from "./components";
 // import GigapetView from "./components/GigapetView";
 import PrivateRoute from "./components/PrivateRoute";
@@ -23,9 +24,9 @@ function App() {
       <Switch>
         <Route exact path="/" component={Start} />
         <Route exact path="/login" component={Login} />
-        <Route exact path="/register" component={Register} />
-        {/* <Route exact path="/testcard" component={GigapetView} /> */}
+        <Route exact path="/register" component={Register} />        
         <PrivateRoute path="/dashboard" component={Dashboard} />
+        <PrivateRoute path="/meal-list" component={MealList} />
         <PrivateRoute path="/meal/:id" component={MealForm} />
       </Switch>
     </div>

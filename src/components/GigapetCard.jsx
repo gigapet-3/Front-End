@@ -8,6 +8,10 @@ const GigapetCard = ({ name, status, id }) => {
     e.preventDefault();
     history.push(`/meal/${id}`);
   };
+  const handleMeals = e => {
+    e.preventDefault();
+    history.push("/meal-list");
+  };
   return (
     <div className="card gigapet-card-image-top m-2">
       <img
@@ -24,6 +28,13 @@ const GigapetCard = ({ name, status, id }) => {
           className="btn btn-primary gigapet-primary"
         >
           feed me
+        </a>
+        <a
+          href="meal-list"
+          onClick={handleMeals}
+          className="m-2 btn btn-primary gigapet-primary"
+        >
+          meal history
         </a>
       </div>
     </div>
