@@ -2,32 +2,36 @@
 @import url("https://fonts.googleapis.com/css?family=Rancho&display=swap");
 
 .Register {
-    min-height: 100%;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-size: cover;
-    background-image: url("../bgimage/background.png");
-    align-items: center;
-    justify-content: center;
-
+  min-height: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  background-image: url("../bgimage/background.png");
+  align-items: center;
+  justify-content: center;
 }
-form {
-    background-color: #6c46a2;;
-    padding: 50px;
-    color: #FAFAFA;
+.register-form {
+    background-color: #6c46a2;
+    padding: 20px 50px;
+    width: 250px;
+    height: 400px;
+    color: #fafafa;
     display: flex;
     flex-direction: column;
     justify-content: center;
     font-family: "Rancho", cursive;
 }
-label {
-    display: flex;
-    color: #FAFAFA
+
+.register-label {
+  display: flex;
+  color: #fafafa;
+  font-size: 1.5rem;
 }
-h2 {
-    display: flex;
-    justify-content: center;
-    color: #FAFAFA;
-    font-family: "Rancho", cursive
+.register-h2 {
+  display: flex;
+  justify-content: center;
+  color: #fafafa;
+  font-family: "Rancho", cursive;
+  margin-bottom: 15%;
 }

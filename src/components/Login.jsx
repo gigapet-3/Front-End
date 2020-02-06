@@ -1,13 +1,15 @@
-import React, { Component } from 'react';
-import './styles/Login.css';
+import React, { Component } from "react";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
+
+import "./styles/Login.css";
 
 class LoginPage extends Component {
   constructor() {
     super();
     this.state = {
-      username: '',
-      password: '',
-      error: '',
+      username: "",
+      password: "",
+      error: ""
     };
 
     this.handlePassChange = this.handlePassChange.bind(this);
@@ -17,46 +19,64 @@ class LoginPage extends Component {
   }
 
   dismissError() {
-    this.setState({ error: '' });
+    this.setState({ error: "" });
   }
 
   handleSubmit(evt) {
     evt.preventDefault();
 
     if (!this.state.username) {
-      return this.setState({ error: 'Username is required' });
+      return this.setState({ error: "Username is required" });
     }
 
     if (!this.state.password) {
-      return this.setState({ error: 'Password is required' });
+      return this.setState({ error: "Password is required" });
     }
+    axiosWithAuth()
+      .post("https://gigapet-3.herokuapp.com/api/auth/login", {
+        username: this.state.username,
+        password: this.state.password
+      })
+      .then(res => {
+        localStorage.setItem("token", res.data.token);
+        this.props.history.push("/dashboard");
+      })
+      .catch(errors => console.log(errors));
 
-    return this.setState({ error: '' });
+    return this.setState({ error: "" });
   }
 
   handleUserChange(evt) {
     this.setState({
-      username: evt.target.value,
+      username: evt.target.value
     });
-  };
+  }
 
   handlePassChange(evt) {
     this.setState({
-      password: evt.target.value,
+      password: evt.target.value
     });
   }
 
   render() {
-   
     return (
       <div className="Login">
-        <form onSubmit={this.handleSubmit}>
-          <h2>Log In!</h2>
-          <h4>User Name
-          </h4>
-          <input type="text" data-test="username" value={this.state.username} onChange={this.handleUserChange} />
-          <h4>Password</h4>
-          <input type="password" data-test="password" value={this.state.password} onChange={this.handlePassChange} />
+        <form className="login-form" onSubmit={this.handleSubmit}>
+          <h2 className="login-h2">Log In!</h2>
+          <label className="login-label">Username</label>
+          <input
+            type="text"
+            data-test="username"
+            value={this.state.username}
+            onChange={this.handleUserChange}
+          />
+          <label className="login-label">Password</label>
+          <input
+            type="password"
+            data-test="password"
+            value={this.state.password}
+            onChange={this.handlePassChange}
+          />
           <input type="submit" value="Log In" data-test="submit" />
         </form>
       </div>
