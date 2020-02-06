@@ -20,7 +20,7 @@ const initialListItems = [
 ];
 
 function App() {
-  const [title, setTitle] = useState("welcome");
+  const [title, setTitle] = useState("Welcome");
   const [menuItems, setMenuItems] = useState([...initialListItems]);
   const location = useLocation();
   useEffect(() => {
@@ -35,8 +35,8 @@ function App() {
         .then(res => {
           const petName = res.data.name;
           location.pathname.includes("list")
-            ? setTitle(`${petName}'s meal list`)
-            : setTitle(`feed ${petName}`);
+            ? setTitle(`${petName}'s Meal List`)
+            : setTitle(`Feed ${petName}`);
           console.log("ok");
         })
         .catch(err => console.log(err));
