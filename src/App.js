@@ -13,12 +13,12 @@ import {
 import PrivateRoute from "./components/PrivateRoute";
 import { axiosWithAuth } from "./utils/axiosWithAuth";
 function App() {
-  const [title, setTitle] = useState("welcome");
+  const [title, setTitle] = useState("Welcome");
   const location = useLocation();
   useEffect(() => {
     console.log(location.pathname);
     if (location.pathname === "/dashboard") {
-      setTitle("my gigapets");
+      setTitle("My GigaPets");
     } else if (location.pathname.includes("meal")) {
       const pet_id = location.pathname.split("/").pop();
       console.log(`the pet id = ${pet_id} `);
@@ -29,9 +29,9 @@ function App() {
           setTitle("welcome");
           const petName = res.data.name;
           if (location.pathname.includes("list")) {
-            setTitle(`${petName}'s meal list`);
+            setTitle(`${petName}'s Meal List`);
           } else {
-            setTitle(`feed ${petName}`);
+            setTitle(`Feed ${petName}`);
           }
           // if (location.pathname.includes(""))
           // location.pathname.includes("list")

@@ -121,7 +121,7 @@ const MealCard = ({ mealList, updateList}) => {
             />
                 <div className="card-body" >
                     <h5 className="card-title">Category: {food.category}</h5>
-                    <h6 className="card-text">Date: {food.date}</h6>
+                    <p className="card-text">Date: {food.date}</p>
                     <p className="card-text">Name: {food.name}</p>
                     <p className="card-text">Servings: {food.servings}</p>
                     <button className="btn btn-primary mealcard-primary" onClick={() => editMeal(food)}>Edit</button>
