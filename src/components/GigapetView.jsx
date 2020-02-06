@@ -79,7 +79,13 @@ const GigapetView = props => {
       <h3 className="text-center">gigapets</h3>
       <div className="test-gigapet-cards">
         {gigapets.map(({ name, status, id }) => (
-          <GigapetCard key={id} id={id} name={name} status={status} />
+          <GigapetCard
+            key={id}
+            id={id}
+            name={name}
+            status={status}
+            setGigapets={setGigapets}
+          />
         ))}
       </div>
     </>

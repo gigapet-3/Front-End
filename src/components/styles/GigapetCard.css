@@ -21,3 +21,10 @@
 .btn-primary:active {
   box-shadow: none;
 }
+
+.edit-btn {
+  opacity: 7%;
+}
+.edit-btn:hover {
+  opacity: 77%;
+}

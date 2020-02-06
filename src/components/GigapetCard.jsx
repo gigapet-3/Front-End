@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./styles/GigapetCard.css";
+import { axiosWithAuth } from "../utils/axiosWithAuth";
 
-const GigapetCard = ({ name, status, id }) => {
+const GigapetCard = ({ name, status, id, setGigapets }) => {
+  const [editing, setEditing] = useState(false);
+  const [cardInfo, setCardInfo] = useState({ name, status });
   const history = useHistory();
   const handleClick = e => {
     e.preventDefault();
@@ -12,6 +15,25 @@ const GigapetCard = ({ name, status, id }) => {
     e.preventDefault();
     history.push("/meal-list");
   };
+  const handleEditClick = e => {
+    e.preventDefault();
+    editing &&
+      axiosWithAuth()
+        .put(`/pets/${id}`, cardInfo)
+        .then(() => {
+          axiosWithAuth()
+            .get("/pets")
+            .then(updated => {
+              setGigapets(updated.data);
+            })
+            .catch(updateErr => console.log(updateErr));
+        })
+        .catch(putErr => console.log(putErr));
+    setEditing(!editing);
+  };
+  const handleChange = e => {
+    setCardInfo({ ...cardInfo, [e.target.name]: e.target.value });
+  };
   return (
     <div className="card gigapet-card-image-top m-2">
       <img
@@ -19,9 +41,37 @@ const GigapetCard = ({ name, status, id }) => {
         className="card-img-top"
         alt="pet name here"
       />
+      <button
+        type="button"
+        class="btn btn-light edit-btn"
+        onClick={handleEditClick}
+      >
+        {editing ? "save" : "edit"}
+      </button>
       <div className="card-body">
-        <h5 className="card-title">{name}</h5>
-        <p className="card-text">{status}</p>
+        {editing ? (
+          <>
+            <input
+              placeholder="name"
+              name="name"
+              className="form-control"
+              value={cardInfo.name}
+              onChange={handleChange}
+            />
+            <input
+              placeholder={`${cardInfo.name || "Pet"}'s status`}
+              name="status"
+              className="form-control"
+              value={cardInfo.status}
+              onChange={handleChange}
+            />
+          </>
+        ) : (
+          <>
+            <h5 className="card-title">{name}</h5>
+            <p className="card-text">{status}</p>
+          </>
+        )}
         <a
           href={`/meals/${id}`}
           onClick={handleClick}
