@@ -37,7 +37,11 @@ const GigapetCard = ({ name, status, id, setGigapets }) => {
   return (
     <div className="card gigapet-card-image-top m-2">
       <img
-        src="https://placekitten.com/286/180"
+        src={
+          Number(id) % 2 === 0
+            ? "http://place-puppy.com/286x180"
+            : "https://placekitten.com/286/180"
+        }
         className="card-img-top"
         alt="pet name here"
       />
