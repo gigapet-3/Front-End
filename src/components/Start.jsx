@@ -1,22 +1,31 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import "./styles/Dashboard.css";
 
-// check to see if logged in
+// check to see if logged in; forward to next appropriate path.
 
 const Start = props => {
-  const [ok, setOk] = useState(false);
+  const history = useHistory();
   useEffect(() => {
-    // try to get a meal
-    // /api/meals/:id
+    // try to connect with the backend.
     axiosWithAuth()
-      .get("/meals")
+      .get("/meals/")
       .then(res => {
-        console.log(res);
-        res.status === 200 && setOk(true);
-      });
-  }, []);
-  return <div className="Dashboard">welcome to Lambdipet</div>;
+        history.push("/dashboard");
+      })
+      .catch(err => history.push("/login"));
+  }, [history]);
+
+  return (
+    <div className="Dashboard">
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Start;

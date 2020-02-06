@@ -16,7 +16,7 @@ function App() {
   const [title, setTitle] = useState("welcome");
   const location = useLocation();
   useEffect(() => {
-    console.log(location.pathname);
+    // console.log(location.pathname);
     if (location.pathname === "/dashboard") {
       setTitle("my gigapets");
     } else if (location.pathname.includes("meal")) {
