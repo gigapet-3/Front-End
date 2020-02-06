@@ -6,5 +6,15 @@ import GigapetCard from "./GigapetCard";
 import NavBar from "./NavBar";
 import Start from "./Start";
 import MealList from "./MealList";
-
-export { Login, Register, Dashboard, MealForm, GigapetCard, NavBar, Start, MealList };
+import Logout from "./Logout";
+export {
+  Login,
+  Register,
+  Dashboard,
+  MealForm,
+  GigapetCard,
+  NavBar,
+  Start,
+  MealList,
+  Logout
+};

@@ -7,42 +7,44 @@ import {
   NavBar,
   Start,
   MealForm,
-  MealList
+  MealList,
+  Logout
 } from "./components";
 
-import PrivateRoute from "./components/PrivateRoute";
 import { axiosWithAuth } from "./utils/axiosWithAuth";
+import PrivateRoute from "./components/PrivateRoute";
+
+const initialListItems = [
+  { url: "/login", text: "Login" },
+  { url: "/register", text: "Register" }
+];
+
 function App() {
-  const [title, setTitle] = useState("Welcome");
+  const [title, setTitle] = useState("welcome");
+  const [menuItems, setMenuItems] = useState([...initialListItems]);
   const location = useLocation();
   useEffect(() => {
-    // console.log(location.pathname);
     if (location.pathname === "/dashboard") {
-      setTitle("My GigaPets");
+      setTitle("my gigapets");
+      if (localStorage.getItem("token"))
+        setMenuItems([{ url: "/logout", text: "Logout" }]);
     } else if (location.pathname.includes("meal")) {
       const pet_id = location.pathname.split("/").pop();
-      // console.log(`the pet id = ${pet_id} `);
-      // axios /pets/:id
       axiosWithAuth()
         .get(`/pets/${pet_id}`)
         .then(res => {
-          setTitle("welcome");
           const petName = res.data.name;
-          if (location.pathname.includes("list")) {
-            setTitle(`${petName}'s Meal List`);
-          } else {
-            setTitle(`Feed ${petName}`);
-          }
-          // if (location.pathname.includes(""))
-          // location.pathname.includes("list")
-          // ? `${petName}'s meal list`
-          // : `feed ${petName}`
-        });
+          location.pathname.includes("list")
+            ? setTitle(`${petName}'s meal list`)
+            : setTitle(`feed ${petName}`);
+          console.log("ok");
+        })
+        .catch(err => console.log(err));
     } else setTitle(location.pathname.split("/").pop());
   }, [location.pathname]);
   return (
     <div className="App">
-      <NavBar />
+      <NavBar menuItems={menuItems} />
       <div className="nav-title text-center">
         <h4 className="p-2">{title}</h4>
       </div>
@@ -50,9 +52,35 @@ function App() {
         <Route exact path="/" component={Start} />
         <Route exact path="/login" component={Login} />
         <Route exact path="/register" component={Register} />
-        <PrivateRoute path="/dashboard" component={Dashboard} />
-        <PrivateRoute path="/meal-list/:petId" component={MealList} />
-        <PrivateRoute path="/meal/:petId" component={MealForm} />
+        <PrivateRoute
+          path="/dashboard"
+          component={props => (
+            <Dashboard {...props} setMenuItems={setMenuItems} />
+          )}
+          setMenuItems={setMenuItems}
+        />
+        <PrivateRoute
+          path="/meal-list/:petId"
+          component={props => (
+            <MealList {...props} setMenuItems={setMenuItems} />
+          )}
+        />
+        <PrivateRoute
+          path="/meal/:petId"
+          component={props => (
+            <MealForm {...props} setMenuItems={setMenuItems} />
+          )}
+        />
+        <PrivateRoute
+          exact
+          path="/logout"
+          component={props => (
+            <Logout
+              {...props}
+              resetmenu={() => setMenuItems([...initialListItems])}
+            />
+          )}
+        />
       </Switch>
     </div>
   );
