@@ -13,7 +13,7 @@ const GigapetCard = ({ name, status, id, setGigapets }) => {
   };
   const handleMeals = e => {
     e.preventDefault();
-    history.push("/meal-list");
+    history.push(`/meal-list/${id}`);
   };
   const handleEditClick = e => {
     e.preventDefault();
@@ -73,7 +73,7 @@ const GigapetCard = ({ name, status, id, setGigapets }) => {
           </>
         )}
         <a
-          href={`/meals/${id}`}
+          href="meals"
           onClick={handleClick}
           className="btn btn-primary gigapet-primary"
         >
