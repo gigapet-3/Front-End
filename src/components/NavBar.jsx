@@ -4,8 +4,23 @@ import { NavLink, useHistory } from "react-router-dom";
 import "./styles/NavBar.css";
 
 // https://getbootstrap.com/docs/4.4/components/navbar/
-// example
+
+export const navlistItem = (pathTo, targetName, idx) => (
+  <li key={idx} className="nav-item">
+    <NavLink className="nav-link text-right" to={pathTo}>
+      {targetName}
+    </NavLink>
+  </li>
+);
+
+// export const initialListItems = [
+//   { url: "/login", text: "Login" },
+//   { url: "/register", text: "Register" }
+// ];
+
 const NavBar = props => {
+  const { menuItems } = props;
+  // const [lItems] = useState(menuItems);
   const history = useHistory();
   const handleBrandClick = e => {
     e.preventDefault();
@@ -35,16 +50,7 @@ const NavBar = props => {
         </button>
         <div className="collapse navbar-collapse" id="gigapetNavbarToggler">
           <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
-            <li className="nav-item">
-              <NavLink className="nav-link text-right" to="/login">
-                Login
-              </NavLink>
-            </li>
-            <li className="nav-item">
-              <NavLink className="nav-link text-right" to="/register">
-                Register
-              </NavLink>
-            </li>            
+            {menuItems.map((x, idx) => navlistItem(x.url, x.text, idx))}
           </ul>
         </div>
       </nav>
