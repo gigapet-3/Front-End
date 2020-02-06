@@ -23,8 +23,10 @@
 }
 
 .edit-btn {
-  opacity: 7%;
+  color: #fafafa;
+  /* opacity: 7%; */
 }
 .edit-btn:hover {
-  opacity: 77%;
+  color: #797979;
+  /* opacity: 77%; */
 }
