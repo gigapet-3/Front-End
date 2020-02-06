@@ -27,7 +27,7 @@ const MealList = () => {
     if (mealList) {
         return(        
             <div className="meal-list-container">
-                <MealCard mealList={mealList} updateList={setMealList} />
+                <MealCard mealList={mealList} updateList={setMealList} petNumber={petNumber}/>
             </div>)
     }  else return (<h1>Loading</h1>)
 
