@@ -13,18 +13,24 @@
 }
 .login-form {
   background-color: #6c46a2;
-  width: 20%;
-  padding: 5%;
+  padding: 20px 50px;
+  width: 250px;
+  height: 400px;
   color: #fafafa;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   font-family: "Rancho", cursive;
 }
 .login-label {
   display: flex;
   color: #fafafa;
+  font-size: 1.5rem;
 }
 .login-h2 {
   display: flex;
   justify-content: center;
   color: #fafafa;
   font-family: "Rancho", cursive;
+  margin-bottom: 15%;
 }

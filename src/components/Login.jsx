@@ -63,7 +63,7 @@ class LoginPage extends Component {
       <div className="Login">
         <form className="login-form" onSubmit={this.handleSubmit}>
           <h2 className="login-h2">Log In!</h2>
-          <label className="login-label">User Name</label>
+          <label className="login-label">Username</label>
           <input
             type="text"
             data-test="username"

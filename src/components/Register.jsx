@@ -63,13 +63,7 @@ class RegisterPage extends Component {
       <div className="Register">
         <form className="register-form" onSubmit={this.handleSubmit}>
           <h2 className="register-h2">Register Now!</h2>
-          <h4>Email</h4>
-          <input
-            type="text"
-            data-test="email"
-            value={this.state.email}
-            onChange={this.handleEmailChange}
-          />
+          <br />
           <h4>Create Username</h4>
           <input
             type="text"
