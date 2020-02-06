@@ -21,7 +21,7 @@ function App() {
       setTitle("my gigapets");
     } else if (location.pathname.includes("meal")) {
       const pet_id = location.pathname.split("/").pop();
-      console.log(`the pet id = ${pet_id} `);
+      // console.log(`the pet id = ${pet_id} `);
       // axios /pets/:id
       axiosWithAuth()
         .get(`/pets/${pet_id}`)
