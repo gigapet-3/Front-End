@@ -29,7 +29,11 @@ const MealList = () => {
             <div className="meal-list-container">
                 <MealCard mealList={mealList} updateList={setMealList} petNumber={petNumber}/>
             </div>)
-    }  else return (<h1>Loading</h1>)
+    }  else return (<div className="d-flex justify-content-center">
+                        <div className="spinner-border" role="status">
+                            <span className="sr-only">Loading...</span>
+                        </div>
+                    </div>)
 
 }
 
