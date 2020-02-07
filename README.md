@@ -1,6 +1,8 @@
 # Front-End
 
-a work in progress... [gigapet-frontend](https://front-end-pi.now.sh/).
+[Web Site](https://gigapet-3.github.io/Marketing-Page/index.html)
+
+[App](https://front-end-pi.now.sh/)
 
 **to get started,**
 
